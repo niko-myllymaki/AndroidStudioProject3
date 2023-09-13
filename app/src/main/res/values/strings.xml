@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assignment_3</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="phonenumber">Phone</string>
+
+</resources>
