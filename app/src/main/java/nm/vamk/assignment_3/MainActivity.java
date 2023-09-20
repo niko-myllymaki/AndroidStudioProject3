@@ -19,9 +19,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
-        setInitialImage();
+        //setInitialImage();
+    }
+/*
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        //Here we can save the state we want
+        return "State was saved!";
     }
 
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String currentValue = savedInstanceState.getString("currentValue");
+    }
+*/
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -30,20 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            newImageView.setImageResource(R.drawable.logo_2);
+            //newImageView.setImageResource(R.drawable.logo_2);
             Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            newImageView.setImageResource(R.drawable.logo_1);
+            //newImageView.setImageResource(R.drawable.logo_1);
             Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
 
         }
     }
 
+    /*
     public void setInitialImage() {
         ImageView initialImageView = findViewById(R.id.companyLogoPortrait);
         initialImageView.setImageResource(R.drawable.logo_1);
     }
-
+*/
     public String getCurrentDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
