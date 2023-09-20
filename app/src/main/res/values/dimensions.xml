@@ -2,8 +2,8 @@
     <dimen name="textview_size">18dp</dimen>
     <dimen name="textview_vertical">35dp</dimen>
 
-    <dimen name="edittext_size">16dp</dimen>
-    <dimen name="edittext_vertical">15dp</dimen>
+    <dimen name="editText_size">16dp</dimen>
+    <dimen name="editText_vertical">15dp</dimen>
 
 
 </resources>

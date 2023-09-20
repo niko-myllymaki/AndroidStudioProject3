@@ -6,6 +6,8 @@
     <string name="address">Address</string>
     <string name="email">Email</string>
     <string name="phonenumber">Phone</string>
+    <string name="sendbutton">Send</string>
+
 
     <string name="firstname_hint">Jack</string>
     <string name="lastname_hint">Smith</string>
