@@ -15,5 +15,6 @@
     <string name="address_hint">Baker Street 51</string>
     <string name="email_hint">jack.smith@gmail.com</string>
     <string name="phonenumber_hint">0400123123</string>
+    <string name="random_number">%1$d</string>
 
 </resources>
