@@ -49,25 +49,23 @@ public class MainActivity extends AppCompatActivity {
         handler.post(randomNumberUpdate);
     }
 
-
-
+    //Save UI state
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        Log.d("debug", "At onSaveInstanceState");
         String savedDateTime = getCurrentDateTime();
         outState.putString("savedDateTime", savedDateTime);
         super.onSaveInstanceState(outState);
 
     }
 
+    //Restore the saved UI state
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         String dateTimeOfLastOrientation = savedInstanceState.getString("savedDateTime");
         dateTimeForToast = dateTimeOfLastOrientation;
-        Log.d("Date Time", dateTimeForToast);
+        Toast.makeText(this, dateTimeForToast, Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -80,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 
     public String getCurrentDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
