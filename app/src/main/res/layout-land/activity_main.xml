@@ -19,6 +19,16 @@ android:layout_height="fill_parent">
             android:text="@string/random_number"/>
 
         <TextView
+            android:id="@+id/tw_last_orientation_random_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tw_random_number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/last_orientation_random_number"/>
+
+        <TextView
             android:id="@+id/tw_firstname"
             android:textSize="@dimen/textview_size"
             android:layout_width="wrap_content"

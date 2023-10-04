@@ -16,5 +16,6 @@
     <string name="email_hint">jack.smith@gmail.com</string>
     <string name="phonenumber_hint">0400123123</string>
     <string name="random_number">%1$d</string>
+    <string name="last_orientation_random_number">Number before orientation change: %d</string>
 
 </resources>

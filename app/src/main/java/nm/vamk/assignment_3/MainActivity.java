@@ -2,6 +2,7 @@ package nm.vamk.assignment_3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textViewRandomNumber;
+    private TextView textViewLastOrientationRandomNumber;
     private int randomNumber;
     private Runnable randomNumberUpdate;
     private Random random = new Random();
@@ -33,12 +35,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
-
         textViewRandomNumber = findViewById(R.id.tw_random_number);
+        textViewLastOrientationRandomNumber = findViewById(R.id.tw_last_orientation_random_number);
+        textViewLastOrientationRandomNumber.setText(getString(R.string.last_orientation_random_number, 0));
+
         randomNumberUpdate = new Runnable() {
             @Override
             public void run() {
-
                 randomNumber = random.nextInt(100) + 1;
                 textViewRandomNumber.setText(getString(R.string.random_number, randomNumber));
                 //Run again after 1 second
@@ -52,37 +55,25 @@ public class MainActivity extends AppCompatActivity {
     //Save UI state
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        String savedDateTime = getCurrentDateTime();
-        outState.putString("savedDateTime", savedDateTime);
         super.onSaveInstanceState(outState);
-
+        dateTimeForToast = getCurrentDateTime();
+        outState.putString("savedDateTime", dateTimeForToast);
+        outState.putInt("savedRandomNumber", randomNumber);
     }
 
     //Restore the saved UI state
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String dateTimeOfLastOrientation = savedInstanceState.getString("savedDateTime");
-        dateTimeForToast = dateTimeOfLastOrientation;
+        dateTimeForToast = savedInstanceState.getString("savedDateTime", "");
+        int randomNumberOfLastOrientation = savedInstanceState.getInt("savedRandomNumber");
         Toast.makeText(this, dateTimeForToast, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, dateTimeForToast, Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, dateTimeForToast, Toast.LENGTH_SHORT).show();
-
-        }
+        textViewLastOrientationRandomNumber.setText(getString(R.string.last_orientation_random_number, randomNumberOfLastOrientation));
     }
 
     public String getCurrentDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        return sdf.format(new Date());
     }
 
 
